@@ -11,7 +11,7 @@ class Matrix
 	end
 
 	def product_column index
-		(0...@matrix.length).inject(1) { |prod, j| prod *= @matrix[index][j] }
+		(0...@matrix.length).inject(1) { |prod, j| prod *= @matrix[j][index] }
 	end
 
 	def max
@@ -31,7 +31,7 @@ class Matrix
 			k -= 1
 		end
 
-		@max = ([lines, columns, diagonal1, diagonal2]).flatten.max
+		@max = [lines, columns, diagonal1, diagonal2].flatten.max
 	end
 
 end
