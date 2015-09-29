@@ -2,7 +2,7 @@
 
 Implementações de problemas do DojoPuzzles.com
 
-matrix: http://dojopuzzles.com/problemas/exibe/sequencia-de-cinco/
+matrix: Encontrar o maior produto entre os elementos das linhas, colunas e diagonais.
 
 mictorio: http://dojopuzzles.com/problemas/exibe/distribuicao-de-mictorios/
 

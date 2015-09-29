@@ -2,7 +2,7 @@ require 'matrix'
 
 describe Matrix do
 
-	context "When 'max' is called called more than once" do
+	context "When 'max' is called  more than once" do
 		let(:matrix) do
 			Matrix.new([
 				[1,1,1,1,2],
