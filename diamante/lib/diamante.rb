@@ -9,8 +9,7 @@ class Diamante
   end
 
   def valid?
-    return true if @letter.class == String && @letter.length == 1 && LETTERS.include?(@letter.upcase)
-    return false
+    @letter.class == String && @letter.length == 1 && LETTERS.include?(@letter.upcase)
   end
 
   def render
