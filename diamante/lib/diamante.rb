@@ -1,7 +1,6 @@
 # http://dojopuzzles.com/problemas/exibe/diamantes/
 
 class Diamante
-
   LETTERS = ("A".."Z").to_a
 
   def initialize(letter)
@@ -9,17 +8,16 @@ class Diamante
   end
 
   def valid?
-    @letter.kind_of?(String) && @letter.length == 1 && LETTERS.include?(@letter.upcase)
+    string? && one_character? && valid_character?
   end
 
   def render
     raise ArgumentError, 'The given argument is not a single letter!' unless valid?
-    return @rendered unless @rendered.nil?
+    return @rendered if @rendered
 
-    @letter = @letter.upcase
-    previous_letters = LETTERS.select { |letter| letter < @letter }
-    external_spaces = previous_letters.length
-    chars_per_line = external_spaces*2 + 1
+    previous_letters  = LETTERS[0, index_for_letter]
+    external_spaces   = index_for_letter
+    chars_per_line    = (external_spaces * 2) + 1
     @rendered = []
 
     complete = previous_letters + [@letter] + previous_letters.reverse
@@ -33,7 +31,8 @@ class Diamante
   end
 
   def to_s
-    render if @rendered.nil?
+    render unless @rendered
+
     @rendered.each do |letter, internal_spaces, external_spaces|
       if internal_spaces.zero?
         internal_chars = letter
@@ -42,6 +41,23 @@ class Diamante
       end
       puts " "*external_spaces + internal_chars + " "*external_spaces
     end
+  end
+
+  private
+  def index_for_letter
+    LETTERS.index(@letter)
+  end
+
+  def string?
+    @letter.kind_of?(String)
+  end
+
+  def valid_character?
+    LETTERS.include?(@letter.upcase)
+  end
+
+  def one_character?
+    @letter.length == 1
   end
 
 end
